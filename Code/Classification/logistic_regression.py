@@ -20,44 +20,45 @@ from sklearn.model_selection import cross_val_score
 import seaborn as sbn
 from sklearn.linear_model import LogisticRegression
 
-data=pd.read_csv('cnn files/train.csv',low_memory=False)
+data = pd.read_csv("Code\\Classification\\csv_files\\train.csv", low_memory=False)
 data.head()
 
-test=pd.read_csv('cnn files/test.csv',low_memory=False)
+test = pd.read_csv("Code\\Classification\\csv_files\\test.csv", low_memory=False)
 test.head()
 
-x=data.iloc[:,0:180]
-y=data.iloc[:,-1]
+x = data.iloc[:, 0:180]
+y = data.iloc[:, -1]
 
-le=LabelEncoder()
-y=le.fit_transform(y)
+le = LabelEncoder()
+y = le.fit_transform(y)
 
-x_test=test.iloc[:,0:180]
-y_test=test.iloc[:,-1]
+x_test = test.iloc[:, 0:180]
+y_test = test.iloc[:, -1]
 
-y_test=le.fit_transform(y_test)
+y_test = le.fit_transform(y_test)
 
-lr=LogisticRegression(max_iter=100000)
+lr = LogisticRegression(max_iter=100000)
 
 x.head()
 
 x_test.head()
 
-lr.fit(x,y)
+lr.fit(x, y)
 
-y_pred=lr.predict(x_test)
+y_pred = lr.predict(x_test)
 
-print(metrics.accuracy_score(y_test,y_pred))
+print(metrics.accuracy_score(y_test, y_pred))
 
-print(classification_report(y_test,y_pred))
+print(classification_report(y_test, y_pred))
 
 from sklearn.metrics import confusion_matrix
-c_m=confusion_matrix(y_test,y_pred)
+
+c_m = confusion_matrix(y_test, y_pred)
 
 import seaborn as sbn
-df_cm=pd.DataFrame(c_m)
 
-plt.figure(figsize=(20,17))
+df_cm = pd.DataFrame(c_m)
+
+plt.figure(figsize=(20, 17))
 plt.title("Confusion Matrix for Gaussian Naive Bayes")
-sbn.heatmap(df_cm,annot=True)
-
+sbn.heatmap(df_cm, annot=True)
