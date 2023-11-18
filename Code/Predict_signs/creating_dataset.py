@@ -216,11 +216,11 @@ def cd_main():
             # sigma=0.33
 
             if cur_mode != -1 and cur_mode != 255 and cur_mode is not None:
-                file_path = "Code\\Predict_signs\\Saved_Dataset\\" + str(chr(cur_mode))
+                file_path = "Code/Predict_signs/Saved_Dataset/" + str(chr(cur_mode))
                 if not path.exists(file_path):
                     os.makedirs(file_path)
                 if count <= limit:
-                    cv2.imwrite(file_path + "\\" + str(count) + ".jpg", res)
+                    cv2.imwrite(file_path + "/" + str(count) + ".jpg", res)
                     print(count)
                     if count == limit:
                         print("Completed")

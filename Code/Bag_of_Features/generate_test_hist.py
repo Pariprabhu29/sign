@@ -81,7 +81,7 @@ def create_histogram(all_bows, kmeans):
     return features_dict
 
 
-test_folder = "Preprocessing/ISL_Datasets/Train-Test/Test"
+test_folder = "Code/Preprocessing/ISL_Datasets/Train-Test/Test"
 
 # Loading Test images
 test_images = load_images_by_category(test_folder)
@@ -96,7 +96,7 @@ bows_test = create_histogram(surf_test, kmeans)
 
 import csv
 
-loc = "Classification/csv_files/test.csv"
+loc = "Code/Classification/csv_files/test.csv"
 with open(loc, "w", newline="") as file:
     writer = csv.writer(file)
     header = []

@@ -153,7 +153,7 @@ def create_model():
 
 model = create_model()
 batch_size = 256
-epochs = 5
+epochs = 30
 model.compile(optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"])
 
 model.summary()
@@ -189,6 +189,8 @@ plt.ylabel("Accuracy", fontsize=16)
 plt.title("Accuracy Curves", fontsize=16)
 
 import pickle
-from keras.models import load_model
 
-model.save("Code/Predict_signs/files/CNN_model.h5")  # Save the model in HDF5 format
+file_name = "Code/Predict_signs/files/CNN"
+outfile = open(file_name, "wb")
+pickle.dump(model, outfile)
+outfile.close()

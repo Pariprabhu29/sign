@@ -81,11 +81,11 @@ def pred_main():
     else:
         method = 1
 
-    model = "Code/Predict_signs/files/CNN_model.h5"
+    model = "Code/Predict_signs/files/CNN"
 
-    from keras.models import load_model
-
-    cnn = load_model("Code/Predict_signs/files/CNN_model.h5")  # Load the saved model
+    infile = open(model, "rb")
+    cnn = pickle.load(infile)
+    infile.close()
 
     bg = None
     count = 0
@@ -228,26 +228,19 @@ def pred_main():
                         res = cv2.Canny(hand, lowThresh, high_thresh)
 
                         # Bag of Visual Words
-                        surf = cv2.xfeatures2d.SURF_create()
+                        """surf = cv2.xfeatures2d.SURF_create()
                         kp, desc = surf.detectAndCompute(res, None)
-                        # print("Surf features extracted!")
+                        #print("Surf features extracted!")
                         features = cv2.drawKeypoints(res, kp, None)
-                        cv2.imshow("Surf Features", features)
+                        cv2.imshow("Surf Features",features)
 
                         if desc is not None:
-                            visual_words = kmeans.predict(desc)
-                            hist = np.array(np.bincount(visual_words, minlength=shape))
-                            hist = hist.reshape(1, -1)
+                            visual_words=kmeans.predict(desc)
+                            hist = np.array(np.bincount(visual_words,minlength=shape))
+                            hist=hist.reshape(1,-1)
                             sign = svm.predict(hist)
                             # output=visual_dict[sign[0]]
-                            cv2.putText(
-                                clone,
-                                output,
-                                (10, 300),
-                                cv2.FONT_HERSHEY_COMPLEX,
-                                2,
-                                (0, 0, 0),
-                            )
+                            cv2.putText(clone,output, (10, 300), cv2.FONT_HERSHEY_COMPLEX, 2, (0, 0, 0))"""
 
                         # CNN Model
                         if res is not None and cv2.contourArea(max_cont) > 1000:

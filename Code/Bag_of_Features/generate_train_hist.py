@@ -112,7 +112,7 @@ def create_histogram(all_descs, kmeans):
     return features_dict
 
 
-train_folder = "Preprocessing/ISL_Datasets/Train-Test/Train"
+train_folder = "Code/Preprocessing/ISL_Datasets/Train-Test/Train"
 
 # Load train images
 train_images = load_images_by_category(train_folder)
@@ -143,7 +143,7 @@ bows_train = create_histogram(train_descriptors_by_class, kmeans)
 # Saving .csv file
 import csv
 
-loc = "Classification/csv_files/train.csv"
+loc = "Code/Classification/csv_files/train.csv"
 with open(loc, "w", newline="") as file:
     writer = csv.writer(file)
     header = []

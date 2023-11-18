@@ -25,7 +25,7 @@ selection = 1
 
 # =====================Create Database=============================================
 def createdb():
-    conn = sqlite3.connect("Code\\Predict_signs\\files\\users_info.db")
+    conn = sqlite3.connect("Code/Predict_signs/files/users_info.db")
     c = conn.cursor()
     c.execute(
         "CREATE TABLE IF NOT EXISTS users (name TEXT , passs TEXT,sqltime TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL)"
@@ -46,7 +46,7 @@ def saveadmin():
     elif pass_err == "":
         messagebox.showinfo("Invalid input", "Password can't be Empty")
     else:
-        conn = sqlite3.connect("Code\\Predict_signs\\files\\users_info.db")
+        conn = sqlite3.connect("Code/Predict_signs/files/users_info.db")
         c = conn.cursor()
         c.execute(
             "INSERT INTO users(name,passs) VALUES(?,?) ",
@@ -61,7 +61,7 @@ def loggin():
     while True:
         a = name2_entry.get()
         b = pass2_entry.get()
-        with sqlite3.connect("Code\\Predict_signs\\files\\users_info.db") as db:
+        with sqlite3.connect("Code/Predict_signs/files/users_info.db") as db:
             cursor = db.cursor()
         find_user = "SELECT * FROM users WHERE name = ? AND passs = ?"
         cursor.execute(find_user, [(a), (b)])
@@ -203,7 +203,7 @@ def loggin():
                 if __name__ == "__main__":
                     l = AnimatedGIF(
                         f1,
-                        path="Code\\Predict_signs\\files\\gif2.gif",
+                        path="Code/Predict_signs/files/gif2.gif",
                     )
                     l.pack()
 
